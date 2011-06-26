@@ -2,7 +2,7 @@
 
 ## 起動するアプリケーション
 # icon trayの設定
-trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent true --tint 0x191970 --height 20 &
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent false --tint 0xffffff --height 20 &
 
 # スクリーンセーバの起動
 xscreensaver -no-splash &
