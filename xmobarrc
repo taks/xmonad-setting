@@ -1,11 +1,10 @@
 -- -*- mode: haskell -*-
-Config { font = "xft:Sans-9:bold"
+Config { font = "xft:Sans-10:bold"
        , bgColor = "black"
        , fgColor = "grey"
        , position = TopW L 90
        , lowerOnStart = False
-       , commands = [ Run Weather "EGPF" ["-t"," <tempF>F","-L","64","-H","77","--normal","green","--high","red","--low","lightblue"] 36000
-                    , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+       , commands = [ Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
@@ -14,5 +13,5 @@ Config { font = "xft:Sans-9:bold"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% * %swap% | %eth0%   <fc=#ee9a00>%date%</fc> | %EGPF%"
+       , template = "%StdinReader% }{ %cpu% | %memory% * %swap% | %eth0%   <fc=#ee9a00>%date%</fc> "
        }
