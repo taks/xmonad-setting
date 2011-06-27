@@ -16,9 +16,13 @@ import XMonad.Layout.MultiToggle.Instances
 import XMonad.Config.Desktop (desktopLayoutModifiers)
 import XMonad.Layout.Named
 
+-- terminal
+terminalCommand = "lxterminal"
+terminalClass = "Lxterminal"
+
 -- ウィンドウ作成時のデフォルトワークスペース
 myManageHookShift = composeAll
-    [ className =? "Gnome-terminal" --> viewShift "1"
+    [ className =? terminalClass    --> viewShift "1"
     , className =? "Iceweasel"      --> viewShift "2"
     , className =? "Emacs"          --> viewShift "3"
     , className =? "com-mathworks-util-PostVMInit" --> viewShift "4"
@@ -31,9 +35,9 @@ myKeys =
   [("M-S-l", spawn "xscreensaver-command -lock")
   , ("M-e e", runOrRaise "emacs" (className =? "Emacs"))
   , ("M-e b", runOrRaise "iceweasel" (className =? "Iceweasel"))
-  , ("M-e t", runOrRaise "gnome-terminal" (className =? "Gnome-terminal"))
-  , ("<F12>", runOrRaise "gnome-terminal" (className =? "Gnome-terminal"))
-  , ("M-S-<Return>", runOrRaise "gnome-terminal" (className =? "Gnome-terminal"))
+  , ("M-e t", runOrRaise terminalCommand (className =? terminalClass))
+  , ("<F12>", runOrRaise terminalCommand (className =? terminalClass))
+  , ("M-S-<Return>", runOrRaise terminalCommand (className =? terminalClass))
   , ("<F11>", sendMessage $ Toggle FULL)]
 
 tall = Tall 1 (3/100) (1/2)
