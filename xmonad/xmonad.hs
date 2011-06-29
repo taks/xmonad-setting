@@ -6,6 +6,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Hooks.SetWMName
 import XMonad.Actions.WindowGo
+import XMonad.Actions.CycleWS
 import Control.Monad (liftM2)
 import qualified XMonad.StackSet as W
 -- キーバインド追加のため
@@ -37,7 +38,7 @@ myKeys =
   , ("M-e b", runOrRaise "iceweasel" (className =? "Iceweasel"))
   , ("M-e t", runOrRaise terminalCommand (className =? terminalClass))
   , ("<F12>", runOrRaise terminalCommand (className =? terminalClass))
-  , ("M-S-<Return>", runOrRaise terminalCommand (className =? terminalClass))
+  , ("M-S-<Return>", nextScreen)
   , ("<F11>", sendMessage $ Toggle FULL)]
 
 tall = Tall 1 (3/100) (1/2)
