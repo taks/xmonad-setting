@@ -1,0 +1,30 @@
+### Commented entries have reasonable defaults.
+### Uncomment to edit them.
+Section: misc
+Priority: optional
+# Homepage: <enter URL here; no default>
+Standards-Version: 3.6.2
+
+Package: xmonad-install-list
+# Version: <enter version here; defaults to 1.0>
+# Maintainer: Your Name <yourname@example.com>
+# Pre-Depends: <comma-separated list of packages>
+Depends: xmonad, xmobar, xscreensaver, trayer, clipit, deja-dup
+# Recommends: <comma-separated list of packages>
+# Suggests: <comma-separated list of packages>
+# Provides: <comma-separated list of packages>
+# Replaces: <comma-separated list of packages>
+# Architecture: all
+# Copyright: <copyright file; defaults to GPL2>
+# Changelog: <changelog file; defaults to a generic changelog>
+# Readme: <README.Debian file; defaults to a generic one>
+# Extra-Files: <comma-separated list of additional files for the doc directory>
+Files: xmonad-startup.desktop /usr/share/xsessions/xmonad-startup.desktop
+       xmonad.start /usr/local/bin/xmonad.start
+# Files: <pair of space-separated paths; First is file to include, second is destination>
+
+#  <more pairs, if there's more than one file to include. Notice the starting space>
+Description: <install xmonad and so on>
+ long description and info
+ .
+ second paragraph

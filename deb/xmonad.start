@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -f $HOME/.xmonad-startup.sh ]; then
+  . $HOME/.xmonad-startup.sh
+fi
+
+/usr/bin/xmonad
