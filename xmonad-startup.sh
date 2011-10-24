@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ## 起動するアプリケーション
-# icon trayの設定
-trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent false --tint 0xffffff --height 20 &
+# taffybar
+~/.cabal/bin/taffybar &
 
 # スクリーンセーバの起動
 xscreensaver -no-splash &

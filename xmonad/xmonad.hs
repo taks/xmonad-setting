@@ -16,6 +16,8 @@ import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Config.Desktop (desktopLayoutModifiers)
 import XMonad.Layout.Named
+import DBus.Client.Simple
+import System.Taffybar.XMonadLog ( dbusLog )
 
 -- terminal
 terminalCommand = "lxterminal"
@@ -44,8 +46,22 @@ myKeys =
 tall = Tall 1 (3/100) (1/2)
 myLayout =  avoidStruts $ mkToggle1 FULL $ desktopLayoutModifiers (named "V" tall ||| (named "H" $ Mirror tall))
 
+-- taffybar
+taffybarColor :: String  -- ^ foreground color: a color name, or #rrggbb format
+              -> String  -- ^ output string
+              -> String
+taffybarColor fg = wrap t "</span>"
+  where t = concat ["<span fgcolor=", fg, ">"]
+
+taffybarPP :: PP
+taffybarPP = defaultPP { ppCurrent = taffybarColor "'yellow'" . wrap "[" "]"
+                       , ppVisible = wrap "(" ")"
+                       , ppTitle = taffybarColor "'green'"
+                       }
+
 main = do
-  xmproc <- spawnPipe "xmobar"
+  client <- connectSession
+  let pp = taffybarPP
   xmonad $ defaultConfig
             {
               modMask = mod3Mask
@@ -54,10 +70,7 @@ main = do
                            <+> manageDocks
                            <+> manageHook defaultConfig
             , layoutHook = myLayout
-            , logHook = dynamicLogWithPP $ xmobarPP
-                            { ppOutput = hPutStrLn xmproc
-                            , ppTitle = xmobarColor "green" "" . shorten 100
-                            }
+            , logHook = dbusLog client pp
             , terminal           = "gnome-terminal"
             , borderWidth        = 4
             , normalBorderColor  = "#333333"

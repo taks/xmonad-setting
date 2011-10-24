@@ -1,0 +1,14 @@
+style "default" {
+  bg[NORMAL] = "#505050"
+  fg[NORMAL] = "#FFFFFF"
+  text[NORMAL] = "#FFFFFF"
+  font_name = "Ubuntu 11"
+}
+
+style "notification-button" = "default" {
+  text[NORMAL] = "#FF0000"
+  fg[NORMAL] = "#FF0000"
+}
+
+widget "Taffybar*" style "default"
+widget "*NotificationCloseButton" style "notification-button"
