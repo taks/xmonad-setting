@@ -42,6 +42,8 @@ myKeys =
   , ("M-e t", runOrRaise terminalCommand (className =? terminalClass))
   , ("<F12>", runOrRaise terminalCommand (className =? terminalClass))
   , ("M-S-<Return>", nextScreen)
+  , ("M-w", nextScreen)
+  , ("M-r" , swapNextScreen)
   , ("<F11>", sendMessage $ Toggle FULL)]
 
 tall = Tall 1 (3/100) (1/2)
