@@ -29,6 +29,7 @@ myManageHookShift = composeAll
     , className =? "Iceweasel"      --> viewShift "2"
     , className =? "Emacs"          --> viewShift "3"
     , className =? "com-mathworks-util-PostVMInit" --> viewShift "4"
+    , className =? "Eclipse" --> viewShift "5"
     ]
     where viewShift = doF . liftM2 (.) W.view W.shift
 
