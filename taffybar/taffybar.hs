@@ -3,7 +3,6 @@ import System.Taffybar
 import System.Taffybar.Systray
 import System.Taffybar.XMonadLog
 import System.Taffybar.SimpleClock
-import System.Taffybar.FreedesktopNotifications
 import System.Taffybar.MPRIS
 
 import System.Taffybar.Widgets.PollingBar
@@ -31,12 +30,11 @@ main = do
                                   }
   let clock = textClockNew Nothing "<span fgcolor='orange'>%a %b %_d %H:%M</span>" 1
       log = xmonadLogNew
-      note = notifyAreaNew defaultNotificationConfig
       mpris = mprisNew
       mem = pollingGraphNew memCfg 1 memCallback
-      cpu = pollingGraphNew cpuCfg 0.5 cpuCallback
+      cpu = pollingGraphNew cpuCfg 1 cpuCallback
       tray = systrayNew
   defaultTaffybar defaultTaffybarConfig { startWidgets = [ log ]
-                                        , endWidgets = [ note, tray, clock, mem, cpu, mpris ]
+                                        , endWidgets = [ tray, clock, mem, cpu, mpris ]
                                         }
 
