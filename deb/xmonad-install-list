@@ -9,7 +9,7 @@ Package: xmonad-install-list
 # Version: <enter version here; defaults to 1.0>
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
-Depends: xmonad, xmobar, xscreensaver, trayer, clipit, deja-dup, dwm-tools
+Depends: xmonad, xmobar, xscreensaver, trayer, clipit
 # Recommends: <comma-separated list of packages>
 # Suggests: <comma-separated list of packages>
 # Provides: <comma-separated list of packages>
