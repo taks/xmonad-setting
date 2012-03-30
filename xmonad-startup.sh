@@ -13,6 +13,9 @@ clipit &
 # deja-dup
 deja-dup-monitor &
 
+# dropbox
+dropbox start -i &
+
 # xmodmap の設定
 xmodmap $HOME/.xmodmaprc
 
