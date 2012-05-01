@@ -17,7 +17,7 @@ import XMonad.Layout.MultiToggle.Instances
 import XMonad.Config.Desktop (desktopLayoutModifiers)
 import XMonad.Layout.Named
 import DBus.Client.Simple
-import System.Taffybar.XMonadLog ( dbusLog )
+import System.Taffybar.XMonadLog ( dbusLogWithPP )
 
 -- terminal
 terminalCommand = "lxterminal"
@@ -75,7 +75,7 @@ main = do
                            <+> manageDocks
                            <+> manageHook defaultConfig
             , layoutHook = myLayout
-            , logHook = dbusLog client pp
+            , logHook = dbusLogWithPP client pp
             , terminal           = "gnome-terminal"
             , borderWidth        = 4
             , normalBorderColor  = "#333333"
