@@ -18,6 +18,8 @@ import XMonad.Config.Desktop (desktopLayoutModifiers)
 import XMonad.Layout.Named
 import DBus.Client.Simple
 import System.Taffybar.XMonadLog ( dbusLogWithPP )
+-- for wmctrl
+import XMonad.Hooks.EwmhDesktops
 
 -- terminal
 terminalCommand = "lxterminal"
@@ -67,7 +69,7 @@ taffybarPP = defaultPP { ppCurrent = taffybarColor "'yellow'" . wrap "[" "]"
 main = do
   client <- connectSession
   let pp = taffybarPP
-  xmonad $ defaultConfig
+  xmonad $ ewmh defaultConfig
             {
               modMask = mod3Mask
             , startupHook = setWMName "LG3D" -- for matlab
