@@ -29,7 +29,7 @@ terminalClass = "Lxterminal"
 -- className は，xprop | grep WM_CLASS で調べられる
 myManageHookShift = composeAll
     [ className =? terminalClass    --> viewShift "1"
-    , className =? "Iceweasel"      --> viewShift "2"
+    , className =? "Firefox"        --> viewShift "2"
     , className =? "Emacs"          --> viewShift "3"
     , className =? "com-mathworks-util-PostVMInit" --> viewShift "4"
     , className =? "Eclipse" --> viewShift "5"
@@ -43,7 +43,7 @@ myKeys :: [(String, X ())]
 myKeys =
   [("M-S-l", spawn "xscreensaver-command -lock")
   , ("M-e e", runOrRaise "emacs" (className =? "Emacs"))
-  , ("M-e b", runOrRaise "iceweasel" (className =? "Iceweasel"))
+  , ("M-e b", runOrRaise "firefox" (className =? "Firefox"))
   , ("M-e t", runOrRaise terminalCommand (className =? terminalClass))
   , ("<F12>", runOrRaise terminalCommand (className =? terminalClass))
   , ("M-S-<Return>", nextScreen)
