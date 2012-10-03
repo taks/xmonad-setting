@@ -22,8 +22,8 @@ import System.Taffybar.XMonadLog ( dbusLogWithPP )
 import XMonad.Hooks.EwmhDesktops
 
 -- terminal
-terminalCommand = "lxterminal"
-terminalClass = "Lxterminal"
+terminalCommand = "terminator"
+terminalClass   = "Terminator"
 
 -- ウィンドウ作成時のデフォルトワークスペース
 -- className は，xprop | grep WM_CLASS で調べられる
