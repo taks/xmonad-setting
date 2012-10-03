@@ -26,6 +26,7 @@ terminalCommand = "lxterminal"
 terminalClass = "Lxterminal"
 
 -- ウィンドウ作成時のデフォルトワークスペース
+-- className は，xprop | grep WM_CLASS で調べられる
 myManageHookShift = composeAll
     [ className =? terminalClass    --> viewShift "1"
     , className =? "Iceweasel"      --> viewShift "2"
