@@ -14,8 +14,13 @@ clipit &
 deja-dup-monitor &
 
 # dropbox
-dropbox start -i &
+(sleep 60s && ~/.dropbox-dist/dropboxd) &
 
 # xmodmap の設定
-xmodmap $HOME/.xmodmaprc
+xmodmap $HOME/.xmodmaprc &
 
+/usr/bin/volumeicon &
+
+wmname LG3D &
+
+gksu /etc/init.d/mayu restart &
