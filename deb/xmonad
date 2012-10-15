@@ -1,0 +1,8 @@
+#!/bin/bash
+
+HBASE=${HOME}/software/xmonad/.virthualenv
+HBIN=xmonad
+
+source ${HBASE}/bin/activate >/dev/null
+${HBASE}/cabal/bin/${HBIN} $@
+deactivate >/dev/null
