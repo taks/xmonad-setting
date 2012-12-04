@@ -4,5 +4,5 @@ if [ -f $HOME/.xmonad-startup.sh ]; then
   . $HOME/.xmonad-startup.sh
 fi
 
-PATH=$HOME/local/bin:$PATH
-$HOME/.cabal/bin/xmonad
+PATH=$HOME/local/bin:$PATH:$HOME/.cabal/bin
+xmonad
