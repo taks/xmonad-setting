@@ -17,7 +17,7 @@ import XMonad.Layout.MultiToggle.Instances
 import XMonad.Config.Desktop (desktopLayoutModifiers)
 import XMonad.Layout.Named
 import DBus.Client.Simple
-import System.Taffybar.XMonadLog ( dbusLogWithPP, taffybarEscape )
+import System.Taffybar.XMonadLog ( dbusLogWithPP, taffybarEscape, taffybarColor )
 -- for wmctrl
 import XMonad.Hooks.EwmhDesktops
 
@@ -55,19 +55,13 @@ tall = Tall 1 (3/100) (1/2)
 myLayout =  avoidStruts $ mkToggle1 FULL $ desktopLayoutModifiers (named "V" tall ||| (named "H" $ Mirror tall))
 
 -- taffybar
-taffybarColor :: String  -- ^ foreground color: a color name, or #rrggbb format
-              -> String  -- ^ output string
-              -> String
-taffybarColor fg = wrap t "</span>"
-  where t = concat ["<span fgcolor=", fg, ">"]
-
 taffybarPP :: PP
-taffybarPP = defaultPP { ppCurrent         = taffybarColor "'yellow'" . taffybarEscape . wrap "[" "]"
+taffybarPP = defaultPP { ppCurrent         = taffybarColor "yellow" "" . taffybarEscape . wrap "[" "]"
                        , ppVisible         = taffybarEscape . wrap "(" ")"
                        , ppHidden          = taffybarEscape
                        , ppHiddenNoWindows = taffybarEscape
-                       , ppUrgent          = taffybarEscape
-                       , ppTitle           = taffybarColor "'green'" . taffybarEscape
+                       , ppUrgent          = taffybarColor "red" "yellow" . taffybarEscape
+                       , ppTitle           = taffybarColor "green" "". taffybarEscape
                        , ppLayout          = taffybarEscape
                        }
 -- main
