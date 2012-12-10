@@ -17,7 +17,7 @@ import XMonad.Layout.MultiToggle.Instances
 import XMonad.Config.Desktop (desktopLayoutModifiers)
 import XMonad.Layout.Named
 import DBus.Client.Simple
-import System.Taffybar.XMonadLog ( dbusLogWithPP )
+import System.Taffybar.XMonadLog ( dbusLogWithPP, taffybarEscape )
 -- for wmctrl
 import XMonad.Hooks.EwmhDesktops
 
@@ -62,11 +62,15 @@ taffybarColor fg = wrap t "</span>"
   where t = concat ["<span fgcolor=", fg, ">"]
 
 taffybarPP :: PP
-taffybarPP = defaultPP { ppCurrent = taffybarColor "'yellow'" . wrap "[" "]"
-                       , ppVisible = wrap "(" ")"
-                       , ppTitle = taffybarColor "'green'"
+taffybarPP = defaultPP { ppCurrent         = taffybarColor "'yellow'" . taffybarEscape . wrap "[" "]"
+                       , ppVisible         = taffybarEscape . wrap "(" ")"
+                       , ppHidden          = taffybarEscape
+                       , ppHiddenNoWindows = taffybarEscape
+                       , ppUrgent          = taffybarEscape
+                       , ppTitle           = taffybarColor "'green'" . taffybarEscape
+                       , ppLayout          = taffybarEscape
                        }
-
+-- main
 main = do
   client <- connectSession
   let pp = taffybarPP
