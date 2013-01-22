@@ -2,7 +2,7 @@
 
 ## 起動するアプリケーション
 # taffybar
-taffybar &
+${HOME}/.cabal/bin/taffybar &
 
 # スクリーンセーバの起動
 xscreensaver -no-splash &
