@@ -35,6 +35,7 @@ myManageHookShift = composeAll
     , className =? "Eclipse" --> viewShift "5"
     , className =? "Titanium Studio" --> viewShift "5"
     , className =? "SDL_App" --> viewShift "5"
+    , className =? "Okular" --> viewShift "6"
     ]
     where viewShift = doF . liftM2 (.) W.view W.shift
 
