@@ -65,14 +65,17 @@ taffybarPP = defaultPP { ppCurrent         = taffybarColor "yellow" "" . taffyba
                        , ppTitle           = taffybarColor "green" "". taffybarEscape
                        , ppLayout          = taffybarEscape
                        }
+
+wl3d :: XConfig a -> XConfig a
+wl3d c = c { startupHook = startupHook c >> setWMName "LG3D" }
+
 -- main
 main = do
   client <- connectSession
   let pp = taffybarPP
-  xmonad $ ewmh defaultConfig
+  xmonad $ wl3d $ ewmh defaultConfig
             {
               modMask = mod3Mask
-            , startupHook = setWMName "LG3D" -- for matlab
             , manageHook = myManageHookShift
                            <+> manageDocks
                            <+> manageHook defaultConfig
