@@ -1,9 +1,7 @@
 
-import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Util.Run(spawnPipe)
 import XMonad.Hooks.SetWMName
 import XMonad.Actions.WindowGo
 import XMonad.Actions.CycleWS
@@ -19,7 +17,7 @@ import XMonad.Layout.Named
 import DBus.Client.Simple
 import System.Taffybar.XMonadLog ( dbusLogWithPP, taffybarEscape, taffybarColor )
 -- for wmctrl
-import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.EwmhDesktops (ewmh)
 import XMonad.Util.SpawnOnce
 
 -- terminal
@@ -94,7 +92,7 @@ main = do
             , startupHook = myStartupHook
             , layoutHook = myLayout
             , logHook = dbusLogWithPP client pp
-            , terminal           = "gnome-terminal"
+            , terminal           = terminalCommand
             , borderWidth        = 4
             , normalBorderColor  = "#333333"
             , focusedBorderColor = "#cd8b00"
