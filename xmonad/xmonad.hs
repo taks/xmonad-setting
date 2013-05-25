@@ -20,6 +20,7 @@ import DBus.Client.Simple
 import System.Taffybar.XMonadLog ( dbusLogWithPP, taffybarEscape, taffybarColor )
 -- for wmctrl
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Util.SpawnOnce
 
 -- terminal
 terminalCommand = "terminator"
@@ -69,6 +70,17 @@ taffybarPP = defaultPP { ppCurrent         = taffybarColor "yellow" "" . taffyba
 wl3d :: XConfig a -> XConfig a
 wl3d c = c { startupHook = startupHook c >> setWMName "LG3D" }
 
+myStartupHook :: X ()
+myStartupHook = do
+  spawnOnce "taffybar"
+  spawnOnce "xscreensaver -no-splash"
+  spawnOnce "deja-dup-monitor"
+  spawnOnce "(sleep 60s && ~/.dropbox-dist/dropboxd)"
+  spawnOnce "volumeicon"
+  spawnOnce "clipit"
+  spawnOnce "xmodmap ~/.xmodmaprc"
+  spawnOnce "~/.gem/ruby/1.9.1/bin/xkeyremap"
+
 -- main
 main = do
   client <- connectSession
@@ -79,6 +91,7 @@ main = do
             , manageHook = myManageHookShift
                            <+> manageDocks
                            <+> manageHook defaultConfig
+            , startupHook = myStartupHook
             , layoutHook = myLayout
             , logHook = dbusLogWithPP client pp
             , terminal           = "gnome-terminal"
