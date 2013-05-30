@@ -24,7 +24,6 @@ desc "設定ファイルのシンボリックリンクの作成"
 task :install do
   App.ln_s File.expand_path('xmonad'),   File.expand_path('~/.xmonad')
   App.ln_s File.expand_path('taffybar'), File.expand_path('~/.config/taffybar')
-  App.ln_s File.expand_path('xmonad-startup.sh'), File.expand_path('~/.xmonad-startup.sh')
 end
 
 desc "debファイルの作成"
