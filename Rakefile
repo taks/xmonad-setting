@@ -26,11 +26,18 @@ task :install do
   App.ln_s File.expand_path('taffybar'), File.expand_path('~/.config/taffybar')
 end
 
+DEB_FILE = "deb/xmonad-install-list_1.0_all.deb"
 desc "debファイルの作成"
-task :deb => ["deb/xmonad-install-list",
+task :deb => DEB_FILE
+file DEB_FILE => ["deb/xmonad-install-list",
               "deb/xmonad-startup.desktop",
               "deb/xmonad.start"] do
   cd 'deb' do
     sh 'equivs-build xmonad-install-list'
   end
+end
+
+desc "install deb"
+task :deb_install => DEB_FILE do
+  sh "sudo gdebi #{DEB_FILE}"
 end
